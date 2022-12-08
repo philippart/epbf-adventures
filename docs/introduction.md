@@ -17,3 +17,12 @@ Reference:
 
 Description:
 This is the official website for eBPF 
+
+## Awsome eBPF collection
+
+Reference
+[Awesome eBPF]https://github.com/zoidbergwill/awesome-ebpf)
+
+Description:
+A collection of eBPF resources covering essential concepts, Linux kernel, man pages, articles & presentations,
+tutorials, examples, tools, projects using eBPF and specialized topics like XDP, BTF, tracing, security...

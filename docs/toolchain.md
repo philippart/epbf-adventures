@@ -1,10 +1,14 @@
 # eBPF Development Toolchains
 
-Several toolchains are available offering higher level programming interfaces than writing raw eBPF bytecode.
+Several toolchains are available offering higher level programming interfaces than writing raw eBPF bytecode as illustrated below.  
+For a comprehensive list of tools refer to:
+- [the evolving eBPF toolchain](https://oswalt.dev/2021/07/the-evolving-ebpf-toolchain/)
+- [awesome eBPF](https://github.com/zoidbergwill/awesome-ebpf#ebpf-workflow-tools-and-utilities)
 
 ## Raw eBPF Bytecode
 
-Extract from [Linux bpf sock_example.c](https://github.com/torvalds/linux/blob/master/samples/bpf/sock_example.c)
+This is akin to writing in assembly language.  
+Extract from [Linux bpf sock_example.c](https://github.com/torvalds/linux/blob/master/samples/bpf/sock_example.c).
 ```c
 struct bpf_insn prog[] = {
     BPF_MOV64_REG(BPF_REG_6, BPF_REG_1),
@@ -24,7 +28,8 @@ struct bpf_insn prog[] = {
 
 ## LLVM Clang eBPF compiler
 
-Same as above using "restricted C" - extract from [Linux bpf sockex1_kern.c](https://github.com/torvalds/linux/blob/master/samples/bpf/sockex1_kern.c))
+Same as above using "restricted C".  
+Extract from [Linux bpf sockex1_kern.c](https://github.com/torvalds/linux/blob/master/samples/bpf/sockex1_kern.c).
 ```c
 int bpf_prog1(struct __sk_buff *skb)
 {
@@ -44,14 +49,34 @@ int bpf_prog1(struct __sk_buff *skb)
 LLVM compiles a "restricted C" language (no unbounded loops, max 4096 instructions, ...) to ELF object files containing special sections
 which get loaded in the kernel using libraries like libbpf, built on top of the bpf() syscall.
 
-### Installation instructions
+### installation instructions
  
-TBD
+See [eBPF assembly with LLVM](https://qmonnet.github.io/whirl-offload/2020/04/12/llvm-ebpf-asm/).  
+Example from linux kernel [eBPF in pure C](https://terenceli.github.io/%E6%8A%80%E6%9C%AF/2020/01/18/ebpf-in-c).
+
+## libbpf-bootstrap
+
+Key resources:
+- 
+
+### installation instructions
+
 
 ## BPF Compiler Collection (BCC)
 
-### Installation instructions
+Key resources:
+- [bcc tutorial](https://github.com/iovisor/bcc/blob/master/docs/tutorial.md)
+- [eBPF tracing with bcc and bpftrace](https://www.brendangregg.com/blog/2019-01-01/learn-ebpf-tracing.html)
+
+### installation instructions
 
 See [bcc installation](https://github.com/iovisor/bcc/blob/master/INSTALL.md)
 
 Check the kernel configuration with `grep BPF /boot/config-<kernel-version>` and compare with requirements from the link above.
+
+## bpftrace
+
+Key resources:
+- [bpftrace](https://github.com/iovisor/bpftrace)
+
+### installation instructions
