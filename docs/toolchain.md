@@ -3,12 +3,14 @@
 Several toolchains are available offering higher level programming interfaces than writing raw eBPF bytecode as illustrated below.  
 For a comprehensive list of tools refer to:
 - [the evolving eBPF toolchain](https://oswalt.dev/2021/07/the-evolving-ebpf-toolchain/)
+- [Brendan Gregg eBPF tools](https://www.brendangregg.com/ebpf.html)
 - [awesome eBPF](https://github.com/zoidbergwill/awesome-ebpf#ebpf-workflow-tools-and-utilities)
 
-## Raw eBPF Bytecode
+# Level 0 - Raw eBPF Bytecode
 
 This is akin to writing in assembly language.  
-Extract from [Linux bpf sock_example.c](https://github.com/torvalds/linux/blob/master/samples/bpf/sock_example.c).
+This program counts how many TCP, UDP and ICMP protocol packets are received on the loopback interface.  
+Extract from [Linux bpf sock_example.c](https://github.com/torvalds/linux/blob/master/samples/bpf/sock_example.c).  
 ```c
 struct bpf_insn prog[] = {
     BPF_MOV64_REG(BPF_REG_6, BPF_REG_1),
@@ -26,7 +28,7 @@ struct bpf_insn prog[] = {
 };
 ```
 
-## LLVM Clang eBPF compiler
+# Level 1 - LLVM Clang eBPF compiler
 
 Same as above using "restricted C".  
 Extract from [Linux bpf sockex1_kern.c](https://github.com/torvalds/linux/blob/master/samples/bpf/sockex1_kern.c).
@@ -46,35 +48,50 @@ int bpf_prog1(struct __sk_buff *skb)
 	return 0;
 }
 ```
-LLVM compiles a "restricted C" language (no unbounded loops, max 4096 instructions, ...) to ELF object files containing special sections
-which get loaded in the kernel using libraries like libbpf, built on top of the bpf() syscall.
+`LLVM` compiles a "restricted C" language (no unbounded loops, max 4096 instructions, ...) to ELF object files containing special sections
+which get loaded in the kernel using libraries like `libbpf`, built on top of the bpf() syscall.  
+For inspecting eBPF programs and maps use `bpftool`.
 
-### installation instructions
+## How to install
  
 See [eBPF assembly with LLVM](https://qmonnet.github.io/whirl-offload/2020/04/12/llvm-ebpf-asm/).  
-Example from linux kernel [eBPF in pure C](https://terenceli.github.io/%E6%8A%80%E6%9C%AF/2020/01/18/ebpf-in-c).
 
-## libbpf-bootstrap
+## Code
 
-Key resources:
-- 
+See a very basic example [src/clang_llvm](../src/clang_llvm/README.md) in this repo.  
+More advanced example require Linux headers, see [eBPF in pure C](https://terenceli.github.io/%E6%8A%80%E6%9C%AF/2020/01/18/ebpf-in-c).
 
-### installation instructions
+# Level 2 - libbpf-bootstrap
 
+`libbpf-bootstrap` provides a scaffolding that simplifies the development eBPF programs in C using `libbpf`.  
+It provides a pre-generated `vmlinux.h` linux kernel header files and supports BPF portability thaanks to 
+BPF CO-RE (compile-one rune-everywhere) and BTF (BPF Type Format).
 
-## BPF Compiler Collection (BCC)
+## Key resources
 
-Key resources:
+See [building applications with libbpf-bootstrap](https://nakryiko.com/posts/libbpf-bootstrap/)
+
+## How to install
+
+See [nakryiko](https://nakryiko.com/posts/bpf-tips-printk/) or [SoByte](https://www.sobyte.net/post/2022-07/c-ebpf/).
+
+## Code
+
+See [src/libbpf-bootstrap](../src/libbpf-bootstrap/README.md) in this repo.
+
+# Level 3 - BPF Compiler Collection (BCC)
+
+## Key resources
 - [bcc tutorial](https://github.com/iovisor/bcc/blob/master/docs/tutorial.md)
 - [eBPF tracing with bcc and bpftrace](https://www.brendangregg.com/blog/2019-01-01/learn-ebpf-tracing.html)
 
-### installation instructions
+## How to install
 
 See [bcc installation](https://github.com/iovisor/bcc/blob/master/INSTALL.md)
 
 Check the kernel configuration with `grep BPF /boot/config-<kernel-version>` and compare with requirements from the link above.
 
-## bpftrace
+# Level 4 - bpftrace
 
 Key resources:
 - [bpftrace](https://github.com/iovisor/bpftrace)

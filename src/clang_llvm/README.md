@@ -1,4 +1,5 @@
 #  instructions
+
 reproducing: https://qmonnet.github.io/whirl-offload/2020/04/12/llvm-ebpf-asm/
 
 ## install clang and llvm
@@ -51,4 +52,31 @@ llvm-objdump -S bpf.o
 ```bash
 clang -target bpf -Wall -O2 -c inline_asm.c -o inline_asm.o
 llvm-objdump -d inline_asm.o
+```
+
+# inspect ebpf programs and maps with bpftool
+
+See [introduction to bpftool](https://qmonnet.github.io/whirl-offload/2021/09/23/bpftool-features-thread/)
+Install with `apt install bpftool`.
+
+```bash
+# bptool must be run with 'sudo'
+
+# list of eBPF programs loaded
+bpftool prog show
+
+# load a program from object code
+# note the examplse above fail to load because they lack a "section(...)" statement to attach to a ebpf hook
+bpftool prog load foo.o /sys/fs/bpf/bar
+
+# dump the bytecode of a program
+bpftool prog dump xlated id 18
+
+# attaching a program to a hook (xdp example)
+bpftool net attach xdp id 42 dev eth0
+
+# show ebpf maps
+bpftool map show
+
+# and many more...
 ```
