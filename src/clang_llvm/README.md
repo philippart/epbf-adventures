@@ -13,6 +13,11 @@ alias llvm-mc=llvm-mc-15
 alias llvm-objdump=llvm-objdump-15
 EOF
 source ~/.bash_aliases
+
+# create symlink instead of aliases
+cd /usr/bin
+sudo ln -s clang-15 clang
+# and so on
 ```
 
 ## from C to object file

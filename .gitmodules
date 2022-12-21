@@ -1,0 +1,3 @@
+[submodule "src/libbpf-bootstrap/libbpf-bootstrap"]
+	path = src/libbpf-bootstrap/libbpf-bootstrap
+	url = https://github.com/libbpf/libbpf-bootstrap
