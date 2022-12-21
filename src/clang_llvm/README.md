@@ -14,9 +14,10 @@ alias llvm-objdump=llvm-objdump-15
 EOF
 source ~/.bash_aliases
 
-# create symlink instead of aliases
+# better: create symlink instead of aliases
 cd /usr/bin
 sudo ln -s clang-15 clang
+sudo ln -s llvm-strip-15 llvm-strip
 # and so on
 ```
 
@@ -82,6 +83,9 @@ bpftool net attach xdp id 42 dev eth0
 
 # show ebpf maps
 bpftool map show
+
+# generate skeleton.h for libbpf-bootstrap
+bpftool gen skeleton ... # see [Makefile](../libbpf-bootstrap/libbpf-bootstrap/examples/c/Makefile) 
 
 # and many more...
 ```
