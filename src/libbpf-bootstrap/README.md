@@ -3,8 +3,10 @@
 reproducing: https://nakryiko.com/posts/bpf-tips-printk/
 
 ## install libbpf-bootstrap
+
 ```bash
 # the src/libbpf-bootstrap directory contains a "libbpf-bootstrap" submodule
+cd src/libpf-bootstrap
 git submodule update --init --recursive
 
 # or clone it anywhere you like with
@@ -12,6 +14,7 @@ git clone --recursive https://github.com/libbpf/libbpf-bootstrap
 ```
 
 ## install dependencies
+
 ```bash
 # zlib (libz-dev or zlib-devel package)
 sudo apt install zlib1g-dev
@@ -21,6 +24,7 @@ sudo apt install libelf-dev
 ```
 
 ## minimal example
+
 see [libbpf-botstrap/README.md](./libbpf-bootstrap/README.md#minimal)
 ```bash
 # edit makefile to use clang-15 and llvm-strip-15 - whichever version you are using
@@ -33,13 +37,15 @@ sudo cat /sys/kernel/debug/tracing/trace_pipe
 ```
 
 ## bootstrap example
+
 see [libbpf-botstrap/README.md](./libbpf-bootstrap/README.md#bootstrap)
 ```bash
 make kootstrap
 sudo ./bootstrap -d 50
 ```
 
-## XDP example in rust (if you are familiar with rust!)
+## XDP example in rust
+
 see [libbpf-botstrap/README.md](./libbpf-bootstrap/README.md#xdp)
 ```bash
 # install rust and cargo
