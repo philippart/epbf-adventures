@@ -18,7 +18,9 @@ see [tutorial](https://github.com/iovisor/bcc/blob/master/docs/tutorial.md)
 - ext4slower-bpfcc
 - tcpretrans-bpfcc
 
-## python programs
+## BPF kernel probes (kprobes)
+
+See https://www.kernel.org/doc/html/latest/trace/kprobetrace.html
 
 ```bash
 # Fetch the https://github.com/iovisor/bcc submodule
@@ -30,4 +32,28 @@ sudo ./hello_bcc.py
 sudo ./sync_count.py       # uses BPF hash map
 sudo ./sync_perf_output.py # uses BPF perf ouput map
 sudo ./disklatency.py      # uses BPF histogram
+```
+
+##  BPF tracepoints
+
+See https://www.kernel.org/doc/html/latest/trace/tracepoints.html
+
+Tracepoints are not available for all system calls but have a more stable api than kprobes.
+Otherwise fprobes (function entry/exit) are better than kprobes (kernel syscalls).
+
+```bash
+# from bcc
+sudo tplist-bpfcc
+# directly
+sudo cat /sys/kernel/debug/tracing/available_events
+
+# check
+sudo ls /sys/kernel/debug/tracing/events
+
+# enable (see https://www.kernel.org/doc/html/latest/trace/events.html)
+echo sched_wakeup >> /sys/kernel/debug/tracing/set_event
+echo 1 > /sys/kernel/debug/tracing/events/sched/sched_wakeup/enable
+
+# format
+sudo cat /sys/kernel/debug/tracing/events/sched/sched_wakeup/format
 ```
