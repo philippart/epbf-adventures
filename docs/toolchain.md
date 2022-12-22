@@ -54,12 +54,12 @@ For inspecting eBPF programs and maps use `bpftool`.
 
 ## How to install
  
-See [eBPF assembly with LLVM](https://qmonnet.github.io/whirl-offload/2020/04/12/llvm-ebpf-asm/).  
+- See [eBPF assembly with LLVM](https://qmonnet.github.io/whirl-offload/2020/04/12/llvm-ebpf-asm/).  
 
 ## Code
 
-See a very basic example [src/clang_llvm](../src/clang_llvm/README.md) in this repo.  
-More advanced example require Linux headers, see [eBPF in pure C](https://terenceli.github.io/%E6%8A%80%E6%9C%AF/2020/01/18/ebpf-in-c).
+- See a very basic example [src/clang_llvm](../src/clang_llvm/README.md) in this repo.  
+- More advanced example require Linux headers, see [eBPF in pure C](https://terenceli.github.io/%E6%8A%80%E6%9C%AF/2020/01/18/ebpf-in-c).
 
 # Level 2 - libbpf-bootstrap
 
@@ -69,15 +69,15 @@ BPF CO-RE (compile-one rune-everywhere) and BTF (BPF Type Format).
 
 ## Key resources
 
-See [building applications with libbpf-bootstrap](https://nakryiko.com/posts/libbpf-bootstrap/)
+- See [building applications with libbpf-bootstrap](https://nakryiko.com/posts/libbpf-bootstrap/)
 
 ## How to install
 
-See [nakryiko](https://nakryiko.com/posts/bpf-tips-printk/) or [SoByte](https://www.sobyte.net/post/2022-07/c-ebpf/).
+- See [nakryiko](https://nakryiko.com/posts/bpf-tips-printk/) or [SoByte](https://www.sobyte.net/post/2022-07/c-ebpf/).
 
 ## Code
 
-See [src/libbpf-bootstrap](../src/libbpf-bootstrap/README.md) in this repo.
+- See [src/libbpf-bootstrap](../src/libbpf-bootstrap/README.md) in this repo.
 
 # Level 3 - BPF Compiler Collection (BCC)
 
@@ -87,9 +87,8 @@ See [src/libbpf-bootstrap](../src/libbpf-bootstrap/README.md) in this repo.
 
 ## How to install
 
-See [bcc installation](https://github.com/iovisor/bcc/blob/master/INSTALL.md)
-
-Check the kernel configuration with `grep BPF /boot/config-<kernel-version>` and compare with requirements from the link above.
+- See [bcc installation](https://github.com/iovisor/bcc/blob/master/INSTALL.md)
+- Check the kernel configuration with `grep BPF /boot/config-<kernel-version>` and compare with requirements from the link above.
 
 # Level 4 - bpftrace
 

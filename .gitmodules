@@ -1,3 +1,6 @@
 [submodule "src/libbpf-bootstrap/libbpf-bootstrap"]
 	path = src/libbpf-bootstrap/libbpf-bootstrap
 	url = https://github.com/libbpf/libbpf-bootstrap
+[submodule "src/bcc/bcc"]
+	path = src/bcc/bcc
+	url = https://github.com/iovisor/bcc
