@@ -12,3 +12,5 @@ For an introduction to eBPF and a selection of sites and blog posts, please refe
 ## Sample programs and tooling
 
 A short survey and testing of the available developer toolchains can be found in [toolchain.md](docs/toolchain.md).
+
+Sample programs can be found under the `src` directory.

@@ -56,4 +56,30 @@ echo 1 > /sys/kernel/debug/tracing/events/sched/sched_wakeup/enable
 
 # format
 sudo cat /sys/kernel/debug/tracing/events/sched/sched_wakeup/format
+
+# example program
+sudo ./bcc/examples/tracing/urandomread.py
+```
+
+## BPF user probes (uprobes)
+
+```bash
+# example program
+sudo ./bcc/examples/tracing/strlen_count.py
+sudo ./bcc/examples/tracing/nodejs_http_server.py
+```
+
+## BPF networking
+
+```bash
+# socket filter
+sudo ./sock_example.py
+
+# XDP (express data path)
+# see also: https://github.com/xdp-project/xdp-tutorial
+sudo ./xdp_example.py
+
+# Traffic control (tc) example (requires pyroute2)
+python3 pip install -m pyroute2
+sudo ./tc_example.py
 ```
