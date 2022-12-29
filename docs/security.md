@@ -1,4 +1,6 @@
-# eBPF for security monitoring (eBPF for good)
+# eBPF for security monitoring or hiding
+
+eBPF can be used for good (detecting) or for bad (hiding)...
 
 ## ✅ Detecting container escapes
 
@@ -53,7 +55,7 @@ But a program can alter or hide command line arguments and program filenames fro
 - and more
 
 
-## ✅ Hiding malicious processes
+## ✅ Hiding malicious processes (ebpf for bad)
 
 Reference: [cymulate](https://cymulate.com/blog/ebpf_hacking/)
 
@@ -97,3 +99,23 @@ Reference:
 - exploiting eBPF memory or performance limits
 - unloading eBPF monitoring programs if seccomp-BPF profile
 - replacing dynamically loaded shared libraries like libbcc.so
+
+
+## ✅ Sniffing PAM logon passwords
+
+Reference: [embracethered](https://embracethered.com/blog/posts/2022/offensive-bpf-bpftrace-sniff-logon-pam-passwords/)
+
+### Problem
+
+Using eBPF (as simple as bpftrace) to trace the pam_getauthtok() of the libpam.so library with a user probe and read the username and password.
+
+### Solution
+
+Same as above (seccomp, bpflock or monitor eBPF programs and which API they trace).
+
+## ✅ Hidding files, directories, ports, logins, lying to sudo, faking/hijacking syscall
+
+References: 
+- [embracethered](https://embracethered.com/blog/posts/2021/offensive-bpf-libbpf-bpf_probe_write_user/)
+- [bad bpf](https://blog.tofile.dev/2021/08/01/bad-bpf.html)
+- [rootkit with ftrace](https://xcellerator.github.io/categories/linux/) - technically not BPF but ftrace + kernel modules but ideas can be transposed to eBPF

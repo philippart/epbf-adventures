@@ -1,4 +1,4 @@
-# Summary of eBPF vulnerabilities (eBPF for bad)
+# Summary of eBPF vulnerabilities
 
 Searching for "eBPF" vunerabilities in the NSIT database finds 14 matches:
 https://nvd.nist.gov/vuln/search/results?form_type=Basic&results_type=overview&query=ebpf&search_type=all&isCpeNameSearch=false
